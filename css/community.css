@@ -1,0 +1,67 @@
+
+* {
+    margin: 0; padding: 0;
+    font-family: '맑은 고딕', 'Malgun gothic', Gothicm, sans-serif;
+}
+body{
+    width: 960px;
+    margin: 0 auto;
+    background: #F6F6F6;
+}
+
+h1{
+    color:white;
+    background-color: green;
+    text-align: center;
+}
+
+table{
+    width: 700px;
+    height: 200px;
+    border-color: green;
+}
+
+.community{
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0 auto;
+}
+.search{
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+#comMainbar  {
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+}
+
+#comMainbar >li {
+    float: left;
+    border: 1px black;
+}
+
+#comMainbar>li>a {
+    display: block;
+    padding: 8px 16px;
+    text-align: center;
+}
+#search {
+    margin-top: 40px;
+   text-align: center; 
+}
+#writing {
+    text-align: center;
+}
+
+a {
+    font-size: 20px;
+    margin-left: 150px;
+    text-decoration: none;
+  }
+  

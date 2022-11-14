@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="css/index_style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+    <script type="text/javascript">
+
+         window.Kakao.init("b8cfcb9bc86d0d64d3278f962b2370fa");
+         //Kakao.init('c089c8172def97eb00c07217cae17495'); // 사용하려는 앱의 JavaScript 키 입력(카카오 예시)
+        
+        function getCookie(name) {
+            var parts = document.cookie.split(name + '=');
+            if (parts.length === 2) { return parts[1].split(';')[0]; }
+        }
+
+        function kakaoLogin() {
+            alert('kakaoLogin >>>');
+
+            Kakao.Auth.authorize({
+                //redirectUri: 'https://developers.kakao.com',
+                redirectUri: 'http://healthcare19.com/index.html',
+            });
+            var token = getCookie('authorize-access-token');
+            alert('token >>>' + token);
+            
+            if(token) {
+                Kakao.Auth.setAccessToken(token);
+                Kakao.Auth.getStatusInfo()
+                    .then(function(res) {
+                    if (res.status === 'connected') {
+                        alert("token >>>" + token);            
+                        document.getElementById('token-result').innerText
+                        = 'login success, token: ' + Kakao.Auth.getAccessToken();
+                    }
+                    })
+                    .catch(function(err) {
+                    Kakao.Auth.setAccessToken(null);
+                    });
+                }
+                
+/*            
+            alert('kakaoLogin');
+
+            Kakao.API.request({
+            url: '/v2/user/me',
+            })
+            .then(function(response) {
+                console.log(response);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+*/            
+            
+/*            
+            window.Kakao.Auth.KakaoLogin({
+                scope:'profile_nickname, account_email,	gender',
+                success: function(AuthObj){
+                    console.log(AuthObj);
+                    window.kakao.API.request({
+                        url:'/v2/user/me',
+                        success:res=>{
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account);
+                        }
+                    })
+                }
+            });
+*/            
+
+        }
+    </script>
+    <div class="wrap">
+        <div class="intro_bg">
+            <div class="header">
+                <div class="search">
+                    <form>
+                    <input type="search" >
+                    <span><img class="search_icon"  alt=""></span>
+                    </form>
+                </div>
+                <ul class="nav">
+                    <li><a href="/home" target="_blank">홈</a></li>
+                    <li><a href="/exer" target="_blank">운동 칼로리</a></li>
+                    <li><a href="/cal" target="_blank">음식 칼로리</a></li>
+                    <li><a href="/list" target="_blank">공지사항</a></li>
+                    <li class="kakao"><a href="javascript:kakaoLogin();"><img src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style="height: 45px;width: 200px;"></a></li>
+                </ul>
+            </div>
+            <div class="intro_text">
+            
+            <h4 class="content1"></h4>
+            </div>
+        </div>
+        </div>
+        <ul class="mid_list">
+            <li>
+                <div>
+                    <div class="content1">오늘 방문자 수 </div>
+                    <div class="under"><script language="javascript" type="text/javascript">  
+                        document.write( + hitCt + "</font> ")  
+                    </script></div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="content1">챌린지 참여 수</div>
+                    <div class="under">0</div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="content1">오늘의 물</div>
+                    <div class="under">0</div>
+                </div>
+            </li>
+       
+
+        </ul>
+
+        <div class="mid_text1">
+        <h1> ABOUT</h1>
+        <div class="content1">
+            다양한 컨텐츠를 이용하여 GREEN HEALTH를 경험해 보세요.
+        </div>
+        <div class="icons">
+            <li>
+                <div class="icon_img">
+                    <img src="image/free-icon-body-scale-4327775.png" width="100px" height="100px" >
+                    <br>
+                </div>
+                <div class="content1_bold">
+                    <br>
+                    BMI측정
+                </div>
+                <div class="content2"> 비만도를 측정하여<br> 여러분의 건강을 확인하세요.</div>
+                <div class="more">
+                   <a href="/bmi">+ more</a>
+                </div>
+            </li>
+
+            <li>
+                <div class="icon_img">
+                    <img src="image/free-icon-instagram-733558.png "width="100px" height="100px" >
+                </div>
+                <div class="content1_bold">
+                    SNS
+                </div>
+                <div class="content2"> SNS를 통해 다양한 <br>이벤트 참여를 해보세요.</div>
+                <div class="more">
+                   + more
+                </div>
+            </li>
+
+            <li>
+                <div class="icon_img">
+                    <img src="image/youtube.png" width="100px" height="100px">
+                </div>
+                <div class="content1_bold">
+                    Music
+                </div>
+                <div class="content2"> 오늘의 추천음악과 함께 <br>운동을 해보세요.</div>
+                <div class="more">
+                   + more
+                </div>
+            </li>
+        </div>
+        <div class="main_text1">
+            <h1>Information</h1>
+            <div class="content1">
+               매주 업데이트 되는 다양한 정보를 통해 여러분들의 HEALTH를 GRREN하게 바꾸어 보세요.
+            </div>
+            <div class="info">
+                <img class="slide1" src="image/ex1.png" >
+                <img class="slide1" src="image/ex2.png">
+                <img class="slide1" src="image/water.png">
+            </div>
+
+        </div>
+        <div class="main_text2">
+            <ul>
+                <li>
+                    <div><h1>content</h1></div>
+                    <div>사이트 문의, 광고 문의는 언제나 연락주세요</div>
+                    <div class="content_bt"> 더 알아보기</div>
+                <li>
+            </ul>
+
+        </div>
+        <footer>
+            <div>Capstione_허수정 김휘동 함지우</div>
+            <div>Purpose. Capstone Design <br>
+            Adder. 부산 남구 신선로 428 동명대학교 동명관 11번건물 116호<br>
+            E-mail. twobutter@kaka0.com
+            copyright 2022 all rights reserved</div>
+        </footer>
+
+        </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
