@@ -17,7 +17,7 @@ router.get("/list",(req,res) => {
             return
         }
 
-        var queryString = 'select * from board';
+        var queryString = 'select * from board order by postdate desc';
         getConnection().query(queryString,  function (error, result) {
             if (error) {
                 console.log("페이징 에러" + error);
